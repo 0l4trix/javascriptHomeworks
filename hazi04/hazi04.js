@@ -150,9 +150,9 @@ function camel(array) {
     { letter: 'o', number: 4 }, { letter: 'u', number: 5 }];
 
     for (let i = 0; i < vowels.length; i++) {
-        array.forEach((n, e) => array[e] = n.replaceAll(vowels[i].letter, newVowels.find(v => v.number === vowels[i].number).letter));
+        array.forEach((n, e) => array[e] = n.toLowerCase().replaceAll(vowels[i].letter, newVowels.find(v => v.number === vowels[i].number).letter));
     }
-    array.forEach((n, i) => array[i] = n.toLowerCase().replace(/(?<=[a-z])\s[a-z]/g, result => result.trim().toUpperCase()));
+    array.forEach((n, i) => array[i] = n.replace(/(?<=[a-z])\s[a-z]/g, result => result.trim().toUpperCase()));
     return array;
 }
 
