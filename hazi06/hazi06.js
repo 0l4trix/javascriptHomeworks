@@ -2,7 +2,7 @@
     Gyakorlatok Dátumokkal
 */
 let date1 = new Date(1899, 12, 31, 23, 59, 59);
-let date2 = '2044. 11. 11'
+let date2 = '2044. 12. 31'
 
 function toDate(date) {
     if (typeof date === 'string')
@@ -62,16 +62,9 @@ const isFuture = date => compareDate(date, new Date()) == 1 ? true : false;
 */
 function dateIncrement (date, year=0, month=0, day=0, hours=0, minutes=0, seconds=0) {
     let newDays = (date.getDate()+day-1)*24*60*60*1000+(date.getHours()+hours)*60*60*1000+(date.getMinutes()+minutes)*60*1000+(date.getSeconds()+seconds)*1000;
-    let newMonth = date.getMonth()+month+1;
-    
-    //Found problem
-    console.log(date.getFullYear()+year+Math.floor(newMonth/12));
-    console.log(newMonth % 12 == 0 ? 12 : newMonth % 12);
-    console.log(new Date(date.getFullYear()+year+Math.floor(newMonth/12), newMonth % 12 == 0 ? 12 : newMonth % 12));
-    
-    return new Date(new Date(date.getFullYear()+year+Math.floor(newMonth/12), newMonth % 12 == 0 ? 12 : newMonth % 12).getTime()+newDays);
+    let newMonth = date.getMonth()+month;
+    return new Date(new Date(date.getFullYear()+year+Math.floor(newMonth/12), newMonth % 12 == 0 ? 0 : newMonth % 12).getTime()+newDays);
 }
-console.log(dateIncrement(date2, 1, 1, 1, 1, 1, 1));
 
 /*
     8. Írj howOld(birthDate) függvényt, mely paraméterként megkapja egy személy születési évét, és visszatér az illető korával. (vagyis, hogy hány éves)
