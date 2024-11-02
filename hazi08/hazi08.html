@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="hazi08.js" defer></script>
+    <style>
+        ul{
+            background-color: rgb(49, 49, 143);
+            border: 5px solid rgb(70, 70, 178);
+            display: none;
+            margin: auto;
+            padding: 10px;
+            text-align: center;
+            min-width: 200px;
+            width: 30%;
+        }
+        ul *{
+            margin: 10px;
+        }
+        ul *:first-child{
+            color: white;
+        }
+        ul :not(:first-child):not(:last-child){
+            background-color: rgb(162, 162, 241);
+            border: solid 2px rgb(195, 195, 250);
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-block;
+            padding: 15px 0;
+            text-align: center;
+            width: 50px;
+        }
+        ul :not(:first-child):not(:last-child):hover{
+            background-color: rgb(195, 195, 250);
+        }
+        ul :last-child{
+            display: block;
+            margin: auto;
+            margin-top: 15px;
+            border: solid 2px rgb(100, 119, 244);
+        }
+        li{
+            list-style-type: none;
+        }
+        .active{
+            display: block;
+        }
+        #container{
+            display: flex;
+            min-height: 300px;
+        }
+        #container li.answer{
+            border: dotted 2px rgb(75, 0, 67);
+        }
+        #container .correct{
+            background-color: rgb(146, 220, 146);
+            border: solid 2px rgb(184, 244, 184);
+            cursor: default;
+        }
+        #container .incorrect{
+            background-color: rgb(243, 123, 123);
+            border: solid 2px rgb(249, 165, 165);
+            cursor: default;
+        }
+        #restart{
+            background: linear-gradient(90deg, #676ddb 0%, #3a4ed5 100%);
+            border-image: linear-gradient(to right, #676ddb 0%, #3a4ed5 100%) 1;
+            border-width: 4px;
+            border-style: solid;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    
+</body>
+</html>
