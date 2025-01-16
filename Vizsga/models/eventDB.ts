@@ -12,11 +12,7 @@ export class EventDB {
     }
 
     deleteEvent(eventId: string) {
-        /*let event = this._allEvents.find(n => n.id === eventId);
-        if (event !== undefined)
-            console.log(event.allParticipants)*/
         this._allEvents.splice(this._allEvents.findIndex(n => n.id === eventId), 1);
-        //notify participants?
     }
 
     listAllType(type: EventTypes): Event[] | undefined{        

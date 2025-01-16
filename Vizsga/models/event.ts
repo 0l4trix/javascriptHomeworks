@@ -1,5 +1,3 @@
-import { Participant } from "../services/participant";
-
 export enum EventTypes {
     Festival = "Festival",
     Concert = "Concert",
@@ -44,7 +42,6 @@ export class Event implements IEvent {
 
     set place(place: string) {
         this._place = place;
-        //send notification to participants
     }
 
     get place(): string {
@@ -53,7 +50,6 @@ export class Event implements IEvent {
 
     set time(time: Date | string) {
         this._time = time;
-        //send notification to participants
     }
 
     get time(): Date | string {
