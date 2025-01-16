@@ -1,19 +1,4 @@
 /*
-Komplett Vizsgafeladat: Rendezvény (fesztivál) Kezelő Rendszer
-Rendzevény: lehet bármi, szülinap, családi, fesztivál, koncert stb...
-
-Cél: Egy OOP alapú rendezvény kezelő rendszer készítése TypeScriptben, amely lehetővé teszi rendezvények kezelését (létrehozás, szerkesztés, törlés),
-résztvevők regisztrálását és nyilvántartását. A rendszer támogassa az rendezvények tematikus csoportosítását,
-valamint nyújtson lehetőséget az rendezvények és résztvevők adatainak lekérdezésére.
-
-.
-
-Projekt Létrehozása:
-npm használata: A projekt npm segítségével hozz létre, legyen benne package json és tsconfig
-Verziókezelés: Git használatával commitold a kódot, és tárold GitHub-on.
-Konfigurációs fájlok: Állítsd be a tsconfig.json és package.json fájlokat a projekt konfigurációjához.
-Segítség az Rendezvénykezelő Rendszer Projekt Feladathoz:
-A rendezvény entitás minimum elvárásai: Név, hely, idő, résztvevők listája, a rendezvény tematikája/típusa.
 
 Rendezvény Kezelés: Implementálj osztályokat és interface-eket az rendezvények kezeléséhez, beleértve azok létrehozását, szerkesztését, és törlését.
 Résztvevők Kezelése: Készíts rendszert a résztvevők felvételéhez és nyilvántartásához, beleértve az rendezvényekhezekhez való hozzáadásukat és eltávolításukat.
@@ -25,6 +10,27 @@ Decoratorok: Használj decoratorokat az osztályok és metódusok funkcionalitá
 Aszinkronitás: Implementálj Promise-okat és/vagy async/await szintaxist az aszinkron műveletek kezelésére, például az objektumok létrehozására - csak hibakezelés végett alkalmazd
 */
 
-import { Event } from "./models/event";
+import { Event, EventTypes } from "./models/event";
 import { EventDB } from "./models/eventDB";
 import { Participant } from "./services/participant";
+
+let festival = new Event('1', 'Rand', 'Rand utca 4.', 'Március 20.', [EventTypes.Festival, EventTypes.Family]);
+let concert = new Event('2', 'Rand', 'Rand utca 5.', 'Április 21.', [EventTypes.Concert, EventTypes.Family]);
+//console.log(festival.time);
+
+let database = new EventDB;
+database.addEvent(festival);
+database.addEvent(concert);
+//console.log(database.allEvents);
+console.log(database.listAllType(EventTypes.Concert))
+
+let participant1 = new Participant('123', 'Teszt Elek');
+let participant2 = new Participant('124', 'Test Alec');
+participant1.signUp(festival);
+participant2.signUp(concert);
+
+database.deleteEvent('1');
+console.log(database.allEvents);
+
+participant2.cancelParticipation(concert);
+console.log(concert.allParticipants);

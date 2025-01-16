@@ -9,8 +9,21 @@ export class Participant{
         this._name = fullName;
     }
 
+    set name(name: string) {
+        this._name = name;
+        //notify event
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
     signUp(event: Event){
-        
+        event.addParticipant(this.id, this._name);
+    }
+
+    cancelParticipation(event: Event){
+        event.removeParticipant(this.id);
     }
     
 }
